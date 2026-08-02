@@ -26,7 +26,7 @@ public class MwEvents extends Handlers {
 
 			@Override
 			public void onClientConnection(NetClientHandler clientHandler, String server, int port) {
-				Handlers.Connection.onClientConnection(clientHandler, server, port);
+				Mw.getInstance().onConnectionOpened(server, port);
 			}
 			
 			@Override

@@ -15,9 +15,9 @@ import mapwriter.region.IChunk;
 public class UndergroundTexture extends Texture {
 
     private Mw mw;
-    private int px = 0;
-    private int py = 0;
-    private int pz = 0;
+    private int px = Integer.MIN_VALUE;
+    private int py = Integer.MIN_VALUE;
+    private int pz = Integer.MIN_VALUE;
     private int updateX;
     private int updateZ;
     private byte[][] updateFlags;
@@ -126,9 +126,16 @@ public class UndergroundTexture extends Texture {
     }
 
     public void update() {
-        this.px = this.mw.playerXInt;
-        this.py = this.mw.playerYInt;
-        this.pz = this.mw.playerZInt;
+        int px = this.mw.playerXInt;
+        int py = this.mw.playerYInt;
+        int pz = this.mw.playerZInt;
+
+        if ((px == this.px) && (py == this.py) && (pz == this.pz)) {
+            return;
+        }
+        this.px = px;
+        this.py = py;
+        this.pz = pz;
 
         this.updateGridW = this.viewCxMax - this.viewCxMin + 1;
         this.updateGridH = this.viewCzMax - this.viewCzMin + 1;

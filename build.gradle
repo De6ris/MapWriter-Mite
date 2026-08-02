@@ -36,6 +36,7 @@ dependencies {
     implementation "com.github.MinecraftIsTooEasy:FishModLoader:3.4.2"
     implementation "com.github.MinecraftIsTooEasy:ManyLib:2.3.0"
     implementation "com.github.MinecraftIsTooEasy:ModMenu:10.1.1"
+    localRuntime "com.github.MinecraftIsTooEasy:ExtraGui:1.3.7"
     localRuntime "com.github.MinecraftIsTooEasy:OhMyCommands:3.0.0-mc1.6.4-MITE-20260629"
     implementation "maven.modrinth:forge-config-legacyfabric:1.0.0"
     implementation "maven.modrinth:rusted-iron-core:1.5.5"

@@ -11,7 +11,6 @@ import mapwriter.api.IMwDataProvider;
 import mapwriter.api.MwAPI;
 import mapwriter.map.mapmode.MapMode;
 import net.minecraft.Entity;
-import net.minecraft.EntityBat;
 import net.minecraft.EntityLiving;
 import net.minecraft.EntityNightwing;
 import net.minecraft.EntityVampireBat;
@@ -345,7 +344,12 @@ public class MapRenderer {
 					entity.posX * scale, entity.posZ * scale);
 
 			double margin = 1.0;
-			if (p.x < this.mapMode.x - margin ||
+			if (this.mapMode.circular) {
+				double radius = (this.mapMode.h / 2.0) + margin;
+				if (((p.x * p.x) + (p.y * p.y)) > (radius * radius)) {
+					continue;
+				}
+			} else if (p.x < this.mapMode.x - margin ||
 					p.x > this.mapMode.x + this.mapMode.w + margin ||
 					p.y < this.mapMode.y - margin ||
 					p.y > this.mapMode.y + this.mapMode.h + margin) {
